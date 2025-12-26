@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: -apple-system, system-ui, sans-serif;
+  background: #050526;
+  color: #ffffff;
+}
+
+/* Экран теста */
+.quiz-screen {
+  min-height: 100vh;
+  background: #050526;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Верхняя панель */
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 16px;
+  border-bottom: 1px solid #262a4a;
+}
+
+.quiz-close {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.quiz-progress {
+  font-size: 16px;
+}
+
+/* Контент */
+.quiz-content {
+  padding: 24px 16px;
+}
+
+.quiz-word {
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+.quiz-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #b7bddc;
+  margin-bottom: 16px;
+}
+
+/* Варианты */
+.quiz-option {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #4b4f73;
+  background: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.quiz-option:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.quiz-option.correct {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.quiz-option.wrong {
+  border-color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.quiz-result {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #b7bddc;
+}
