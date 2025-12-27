@@ -8,30 +8,113 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <div class="quiz-screen">
-    <div class="quiz-header">
-      <button class="quiz-close">✕</button>
-      <div class="quiz-progress" id="quiz-progress">1 / 20</div>
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="app-title">
+        <span class="app-logo">📚</span>
+        <div>
+          <div class="app-name">WordShot</div>
+          <div class="app-subtitle">Привет, аяы!</div>
+        </div>
+      </div>
+      <button class="share-btn">⇪</button>
+    </header>
+
+    <!-- СТАТИСТИКА -->
+    <section class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="total-words">30</div>
+        <div class="stat-label">Всего слов</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="learned-words">0</div>
+        <div class="stat-label">Изучено</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="progress-percent">0%</div>
+        <div class="stat-label">Прогресс</div>
+      </div>
+    </section>
+
+    <!-- МЕНЮ -->
+    <section class="menu">
+      <button class="menu-item" id="start-training-btn">
+        <span class="menu-icon play">▶</span>
+        <div class="menu-text">
+          <div class="menu-title">Начать тренировку</div>
+          <div class="menu-subtitle">Учите слова в режиме квиза</div>
+        </div>
+      </button>
+
+      <button class="menu-item" id="my-words-btn">
+        <span class="menu-icon orange">М</span>
+        <div class="menu-text">
+          <div class="menu-title">Мои слова</div>
+          <div class="menu-subtitle">Управление наборами слов</div>
+        </div>
+      </button>
+
+      <button class="menu-item" id="stats-btn">
+        <span class="menu-icon green">📈</span>
+        <div class="menu-text">
+          <div class="menu-title">Статистика</div>
+          <div class="menu-subtitle">Просмотр прогресса обучения</div>
+        </div>
+      </button>
+
+      <button class="menu-item" id="fonts-btn">
+        <span class="menu-icon purple">T</span>
+        <div class="menu-text">
+          <div class="menu-title">Шрифты</div>
+          <div class="menu-subtitle">Выбрать стиль текста</div>
+        </div>
+      </button>
+    </section>
+
+    <!-- ЭКРАН КВИЗА (пока спрятан) -->
+    <div class="quiz-screen" id="quiz-screen" hidden>
+      <div class="quiz-header">
+        <button class="quiz-close" id="quiz-close-btn">✕</button>
+        <div class="quiz-progress" id="quiz-progress">1 / 20</div>
+      </div>
+
+      <div class="quiz-content">
+        <div class="quiz-word" id="quiz-word">слово</div>
+        <div class="quiz-subtitle">Choose the answer</div>
+        <div id="quiz-options"></div>
+        <div id="quiz-result" class="quiz-result"></div>
+      </div>
     </div>
 
-    <div class="quiz-content">
-      <div class="quiz-word" id="quiz-word">слово</div>
-      <div class="quiz-subtitle">Choose the answer</div>
-
-      <div id="quiz-options"></div>
-
-      <div id="quiz-result" class="quiz-result"></div>
-    </div>
   </div>
 
   <script src="app.js"></script>
 
   <script>
+    // PWA
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
         .then(() => console.log('Service Worker зарегистрирован!'))
         .catch(err => console.error('Ошибка регистрации Service Worker:', err));
     }
+
+    // Простая навигация между главным экраном и квизом
+    const quizScreen = document.getElementById('quiz-screen');
+    const startBtn = document.getElementById('start-training-btn');
+    const closeQuizBtn = document.getElementById('quiz-close-btn');
+
+    startBtn.addEventListener('click', () => {
+      quizScreen.hidden = false;
+      // при желании можно затемнять фон или скрывать меню
+      // document.querySelector('.menu').hidden = true;
+    });
+
+    closeQuizBtn.addEventListener('click', () => {
+      quizScreen.hidden = true;
+      // document.querySelector('.menu').hidden = false;
+    });
   </script>
 </body>
 </html>
