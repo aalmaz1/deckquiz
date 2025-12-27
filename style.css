@@ -90,3 +90,172 @@ body {
   font-size: 14px;
   color: #b7bddc;
 }
+:root {
+  --bg-main: #05241b;
+  --bg-header: #0b4a33;
+  --bg-card: #0a3024;
+  --bg-stat-card: #0e3a2b;
+  --text-main: #ffffff;
+  --text-muted: #a9c3b4;
+  --radius-lg: 16px;
+  --radius-sm: 12px;
+}
+
+/* Общий фон приложения */
+body {
+  margin: 0;
+  font-family: -apple-system, system-ui, sans-serif;
+  background: #000;              /* фон вокруг карточки */
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+}
+
+/* Контейнер приложения */
+.app {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  background: var(--bg-main);
+  padding: 12px;
+}
+
+/* HEADER */
+
+.app-header {
+  background: var(--bg-header);
+  border-radius: 24px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.app-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffb84d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-name {
+  font-weight: 600;
+}
+
+.app-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.share-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 18px;
+}
+
+/* СТАТИСТИКА */
+
+.stats {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.stat-card {
+  background: var(--bg-stat-card);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  text-align: left;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* МЕНЮ */
+
+.menu {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-item:active {
+  transform: scale(0.98);
+}
+
+.menu-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.menu-icon.play   { background: #00c85333; }
+.menu-icon.orange { background: #ff980033; }
+.menu-icon.green  { background: #4caf5033; }
+.menu-icon.purple { background: #9c27b033; }
+
+.menu-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-title {
+  font-size: 15px;
+}
+
+.menu-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ЭКРАН КВИЗА ПОВЕРХ МЕНЮ */
+
+#quiz-screen {
+  position: fixed;
+  inset: 0;
+  margin: 0 auto;
+  max-width: 480px;
+  background: #050526;
+  z-index: 10;
+}
