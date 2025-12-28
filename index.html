@@ -1,120 +1,234 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WordShot</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordShot</title>
+    <style>
+        :root {
+            --bg-dark: #0d1f1c;
+            --bg-card: #0a2d27;
+            --text-primary: #ffffff;
+            --text-secondary: #a0d8d0;
+            --green: #1abc9c;
+            --orange: #e67e22;
+            --teal: #16a085;
+            --purple: #9b59b6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px; /* типичная ширина мобильного приложения */
+            background: linear-gradient(to bottom, var(--bg-card), var(--bg-dark));
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-card);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .greeting {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: var(--bg-card);
+            margin: 15px;
+            border-radius: 16px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 36px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .menu {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .menu-item {
+            width: 100%;
+            background-color: var(--bg-card);
+            border: none;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .menu-item:active {
+            transform: scale(0.98);
+        }
+
+        .menu-item .icon {
+            font-size: 28px;
+            width: 50px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .menu-item strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .menu-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .menu-item.green .icon { color: var(--green); }
+        .menu-item.orange .icon { color: var(--orange); }
+        .menu-item.teal .icon { color: var(--teal); }
+        .menu-item.purple .icon { color: var(--purple); }
+
+        /* Адаптивность */
+        @media (max-width: 400px) {
+            .container {
+                border-radius: 0;
+                height: 100vh;
+            }
+            header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .stats {
+                margin: 10px;
+                padding: 15px;
+            }
+            .stat .number {
+                font-size: 30px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                background-color: #000;
+            }
+            .container {
+                height: 800px; /* фиксированная высота для планшетов/десктопа */
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="app">
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/40x40/ffffff/000000?text=📚" alt="Logo" class="logo">
+            <h1>WordShot</h1>
+            <p class="greeting">Привет, абвгд</p>
+        </header>
 
-    <!-- HEADER -->
-    <header class="app-header">
-      <div class="app-title">
-        <span class="app-logo">📚</span>
-        <div>
-          <div class="app-name">WordShot</div>
-          <div class="app-subtitle">Привет, аяы!</div>
+        <div class="stats">
+            <div class="stat">
+                <span class="number">30</span>
+                <span class="label">Всего слов</span>
+            </div>
+            <div class="stat">
+                <span class="number">0</span>
+                <span class="label">Изучено</span>
+            </div>
+            <div class="stat">
+                <span class="number">0%</span>
+                <span class="label">Прогресс</span>
+            </div>
         </div>
-      </div>
-      <button class="share-btn">⇪</button>
-    </header>
 
-    <!-- СТАТИСТИКА -->
-    <section class="stats">
-      <div class="stat-card">
-        <div class="stat-value" id="total-words">30</div>
-        <div class="stat-label">Всего слов</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="learned-words">0</div>
-        <div class="stat-label">Изучено</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="progress-percent">0%</div>
-        <div class="stat-label">Прогресс</div>
-      </div>
-    </section>
+        <div class="menu">
+            <button class="menu-item green">
+                <span class="icon">▶</span>
+                <div>
+                    <strong>Начать тренировку</strong>
+                    <p>Учите слова в режиме квиза</p>
+                </div>
+            </button>
 
-    <!-- МЕНЮ -->
-    <section class="menu">
-      <button class="menu-item" id="start-training-btn">
-        <span class="menu-icon play">▶</span>
-        <div class="menu-text">
-          <div class="menu-title">Начать тренировку</div>
-          <div class="menu-subtitle">Учите слова в режиме квиза</div>
+            <button class="menu-item orange">
+                <span class="icon">📖</span>
+                <div>
+                    <strong>Мои слова</strong>
+                    <p>Управление наборами слов</p>
+                </div>
+            </button>
+
+            <button class="menu-item teal">
+                <span class="icon">📈</span>
+                <div>
+                    <strong>Статистика</strong>
+                    <p>Просмотр прогресса обучения</p>
+                </div>
+            </button>
+
+            <button class="menu-item purple">
+                <span class="icon">T</span>
+                <div>
+                    <strong>Шрифты</strong>
+                    <p>Выбрать стиль текста</p>
+                </div>
+            </button>
         </div>
-      </button>
-
-      <button class="menu-item" id="my-words-btn">
-        <span class="menu-icon orange">М</span>
-        <div class="menu-text">
-          <div class="menu-title">Мои слова</div>
-          <div class="menu-subtitle">Управление наборами слов</div>
-        </div>
-      </button>
-
-      <button class="menu-item" id="stats-btn">
-        <span class="menu-icon green">📈</span>
-        <div class="menu-text">
-          <div class="menu-title">Статистика</div>
-          <div class="menu-subtitle">Просмотр прогресса обучения</div>
-        </div>
-      </button>
-
-      <button class="menu-item" id="fonts-btn">
-        <span class="menu-icon purple">T</span>
-        <div class="menu-text">
-          <div class="menu-title">Шрифты</div>
-          <div class="menu-subtitle">Выбрать стиль текста</div>
-        </div>
-      </button>
-    </section>
-
-    <!-- ЭКРАН КВИЗА (пока спрятан) -->
-    <div class="quiz-screen" id="quiz-screen" hidden>
-      <div class="quiz-header">
-        <button class="quiz-close" id="quiz-close-btn">✕</button>
-        <div class="quiz-progress" id="quiz-progress">1 / 20</div>
-      </div>
-
-      <div class="quiz-content">
-        <div class="quiz-word" id="quiz-word">слово</div>
-        <div class="quiz-subtitle">Choose the answer</div>
-        <div id="quiz-options"></div>
-        <div id="quiz-result" class="quiz-result"></div>
-      </div>
     </div>
-
-  </div>
-
-  <script src="app.js"></script>
-
-  <script>
-    // PWA
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(() => console.log('Service Worker зарегистрирован!'))
-        .catch(err => console.error('Ошибка регистрации Service Worker:', err));
-    }
-
-    // Простая навигация между главным экраном и квизом
-    const quizScreen = document.getElementById('quiz-screen');
-    const startBtn = document.getElementById('start-training-btn');
-    const closeQuizBtn = document.getElementById('quiz-close-btn');
-
-    startBtn.addEventListener('click', () => {
-      quizScreen.hidden = false;
-      // при желании можно затемнять фон или скрывать меню
-      // document.querySelector('.menu').hidden = true;
-    });
-
-    closeQuizBtn.addEventListener('click', () => {
-      quizScreen.hidden = true;
-      // document.querySelector('.menu').hidden = false;
-    });
-  </script>
 </body>
 </html>
