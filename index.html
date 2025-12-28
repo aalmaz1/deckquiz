@@ -43,7 +43,6 @@
             flex-direction: column;
         }
 
-        /* Скрытие экранов */
         .hidden {
             display: none !important;
         }
@@ -173,17 +172,18 @@
         }
 
         .quiz-content {
-            padding: 40px 20px 20px;
+            padding: 60px 30px 40px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
-        .quiz-title {
-            font-size: 36px;
+        .quiz-word {
+            font-size: 40px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: var(--text-primary);
         }
 
@@ -192,14 +192,15 @@
             color: var(--text-secondary);
             font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
+            letter-spacing: 1.2px;
+            margin-bottom: 50px;
         }
 
         .options {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
         }
 
         .option {
@@ -207,23 +208,17 @@
             color: var(--text-primary);
             border: none;
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px 20px;
             font-size: 18px;
             text-align: left;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .option:active {
-            transform: scale(0.98);
-        }
-
-        .option.correct {
-            background-color: #1abc9c;
-        }
-
-        .option.incorrect {
-            background-color: #e74c3c;
+            transform: translateY(2px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
 
         /* Адаптивность */
@@ -232,18 +227,15 @@
                 border-radius: 0;
                 height: 100vh;
             }
-            header, .quiz-header {
-                padding: 15px;
+            .quiz-content {
+                padding: 50px 20px 30px;
             }
-            h1, .quiz-title {
-                font-size: 28px;
+            .quiz-word {
+                font-size: 36px;
             }
-            .stats {
-                margin: 10px;
-                padding: 15px;
-            }
-            .stat .number {
-                font-size: 30px;
+            .option {
+                padding: 20px 18px;
+                font-size: 17px;
             }
         }
 
@@ -321,14 +313,14 @@
     <div class="quiz-container hidden" id="quiz-screen">
         <header class="quiz-header">
             <button class="back-btn" id="back-to-main">✕</button>
-            <div class="progress" id="quiz-progress">1 / 20</div>
+            <div class="progress">1 / 20</div>
         </header>
 
         <div class="quiz-content">
-            <h2 class="quiz-title" id="quiz-word">переговоры</h2>
+            <h2 class="quiz-word">переговоры</h2>
             <p class="quiz-instruction">ВЫБЕРИТЕ ПРАВИЛЬНЫЙ ПЕРЕВОД</p>
 
-            <div class="options" id="quiz-options">
+            <div class="options">
                 <button class="option">bankruptcy</button>
                 <button class="option">negotiation</button>
                 <button class="option">bond</button>
@@ -338,7 +330,7 @@
     </div>
 
     <script>
-        // Переключение экранов
+        // Переключение между экранами
         document.getElementById('start-quiz').addEventListener('click', () => {
             document.getElementById('main-screen').classList.add('hidden');
             document.getElementById('quiz-screen').classList.remove('hidden');
@@ -348,8 +340,7 @@
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('main-screen').classList.remove('hidden');
         });
-
-        // Здесь позже добавим логику квиза (слова, ответы, прогресс и т.д.)
     </script>
+
 </body>
 </html>
